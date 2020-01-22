@@ -1,0 +1,38 @@
+ 
+{% extends 'myapp/basic.html' %}
+{% block title %}Sign In{% endblock %}
+{% block body %}
+<div class="pt-5"></div>
+<div class="container pt-5">
+<form action="{% url 'signup' %}" method="POST" style="max-width:500px;margin:auto"> {% csrf_token %}
+  <h2>Register Form</h2>
+
+  {{ usernameerror }}
+  <div class="input-container ">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Username" name="username" autocomplete="off" pattern="[a-zA-Z0-9]+" maxlength="30" title="letters and numbers only, no punctuation or special characters" required>
+  </div>
+
+  <div class="input-container">
+    <i class="fa fa-envelope icon"></i>
+    <input class="input-field" type="text" placeholder="Email" name="email" autocomplete="off" maxlength="40" required>
+  </div>
+  
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Password" name="password1" minlength="8" required>
+  </div>
+  <span class="text-danger">{{ passworderror }}</span>
+  <div class="input-container">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="re-enter your password" name="password2" required>
+  </div>
+
+
+  <div class="text-center pt-3">Already a member?<a href="{% url 'login' %}" class="text-danger font-weight-bold"> Sign In</a></span></div>
+  <button type="submit" class="btn btn-primary btn-lg">Register</button>
+
+</form>
+</div>
+
+{% endblock %}
